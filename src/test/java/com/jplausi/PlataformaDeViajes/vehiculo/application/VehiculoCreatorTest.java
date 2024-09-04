@@ -6,6 +6,7 @@ import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
+import com.jplausi.PlataformaDeViajes.apps.vehiculo.CreateVehiculoRequest;
 import com.jplausi.PlataformaDeViajes.vehiculo.application.create.VehiculoCreator;
 import com.jplausi.PlataformaDeViajes.vehiculo.domain.Vehiculo;
 import com.jplausi.PlataformaDeViajes.vehiculo.domain.VehiculoRepository;
@@ -19,7 +20,7 @@ final class VehiculoCreatorTest {
 
         Vehiculo vehiculo = new Vehiculo("some-id", "some-patente","some-km");
 
-        creator.create(vehiculo.getId(), vehiculo.getPatente(), vehiculo.getKm());
+        creator.create(new CreateVehiculoRequest(vehiculo.getId(), vehiculo.getPatente(), vehiculo.getKm()));
 
         verify(repository,atLeastOnce()).save(vehiculo);
     }

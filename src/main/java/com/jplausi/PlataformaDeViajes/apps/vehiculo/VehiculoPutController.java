@@ -19,11 +19,12 @@ public final class VehiculoPutController {
     }
 
     @PutMapping(value = "/vehiculo/{id}")
-    public ResponseEntity create(
+    public ResponseEntity<String> create(
         @PathVariable String id,
         @RequestBody Request request
     ){
-        creator.create(id, request.getPatente(), request.getKm());
+        creator.create(new CreateVehiculoRequest(id, request.getPatente(), request.getKm()));
+        
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     
