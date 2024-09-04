@@ -1,4 +1,4 @@
-package com.jplausi.PlataformaDeViajes.vehiculo;
+package com.jplausi.PlataformaDeViajes.vehiculo.application;
 
 import org.junit.jupiter.api.Test;
 
