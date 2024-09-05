@@ -15,7 +15,7 @@ public class VehiculoEnMemoriaRepository implements VehiculoRepository {
 
     @Override
     public void save(Vehiculo vehiculo) {
-        vehiculos.put(vehiculo.getId(), vehiculo);
+        vehiculos.put(vehiculo.getId().value(), vehiculo);
     }
 
     @Override

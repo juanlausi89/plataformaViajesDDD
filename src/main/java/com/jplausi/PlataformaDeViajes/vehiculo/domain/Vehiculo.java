@@ -4,38 +4,38 @@ import java.util.Objects;
 
 public class Vehiculo {
 
-    private String id;
-    private String patente;
-    private String km;
+    private VehiculoId id;
+    private VehiculoPatente patente;
+    private VehiculoKm km;
 
 
-    public Vehiculo(String id, String patente, String km) {
+    public Vehiculo(VehiculoId id, VehiculoPatente patente, VehiculoKm km) {
         this.id = id;
         this.patente = patente;
         this.km = km;
     }
 
-    public String getId() {
+    public VehiculoId getId() {
         return this.id;
     }
 
-    public void setId(String id) {
+    public void setId(VehiculoId id) {
         this.id = id;
     }
 
-    public String getPatente() {
+    public VehiculoPatente getPatente() {
         return this.patente;
     }
 
-    public void setPatente(String patente) {
+    public void setPatente(VehiculoPatente patente) {
         this.patente = patente;
     }
 
-    public String getKm() {
+    public VehiculoKm getKm() {
         return this.km;
     }
 
-    public void setKm(String km) {
+    public void setKm(VehiculoKm km) {
         this.km = km;
     }
 
