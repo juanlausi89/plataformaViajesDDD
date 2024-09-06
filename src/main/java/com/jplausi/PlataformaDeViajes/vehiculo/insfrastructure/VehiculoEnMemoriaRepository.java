@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.jplausi.PlataformaDeViajes.shared.domain.Service;
 import com.jplausi.PlataformaDeViajes.vehiculo.domain.Vehiculo;
+import com.jplausi.PlataformaDeViajes.vehiculo.domain.VehiculoId;
 import com.jplausi.PlataformaDeViajes.vehiculo.domain.VehiculoRepository;
 
 
@@ -19,8 +20,8 @@ public class VehiculoEnMemoriaRepository implements VehiculoRepository {
     }
 
     @Override
-    public Optional<Vehiculo> search(String id) {
-        return Optional.ofNullable(vehiculos.get(id));
+    public Optional<Vehiculo> search(VehiculoId id) {
+        return Optional.ofNullable(vehiculos.get(id.value()));
     }
     
 }

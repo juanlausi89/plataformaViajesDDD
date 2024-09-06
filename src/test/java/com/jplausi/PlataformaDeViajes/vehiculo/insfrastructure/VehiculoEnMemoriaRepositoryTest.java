@@ -8,9 +8,9 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 
 import com.jplausi.PlataformaDeViajes.vehiculo.domain.Vehiculo;
-import com.jplausi.PlataformaDeViajes.vehiculo.domain.VehiculoId;
-import com.jplausi.PlataformaDeViajes.vehiculo.domain.VehiculoKm;
-import com.jplausi.PlataformaDeViajes.vehiculo.domain.VehiculoPatente;
+import com.jplausi.PlataformaDeViajes.vehiculo.domain.VehiculoIdMother;
+import com.jplausi.PlataformaDeViajes.vehiculo.domain.VehiculoMother;
+
 
 final class VehiculoEnMemoriaRepositoryTest {
 
@@ -19,11 +19,7 @@ final class VehiculoEnMemoriaRepositoryTest {
         
         VehiculoEnMemoriaRepository repository = new VehiculoEnMemoriaRepository();
 
-        Vehiculo vehiculo = new Vehiculo(
-            new VehiculoId("decf33ca-81a7-419f-a07a-74f214e928e5"), 
-            new VehiculoPatente("some-patente"),
-            new VehiculoKm( "some-km")
-        );
+        Vehiculo vehiculo = VehiculoMother.random();
 
         repository.save(vehiculo);
     }
@@ -33,21 +29,17 @@ final class VehiculoEnMemoriaRepositoryTest {
         
         VehiculoEnMemoriaRepository repository = new VehiculoEnMemoriaRepository();
 
-        Vehiculo vehiculo = new Vehiculo(
-            new VehiculoId("decf33ca-81a7-419f-a07a-74f214e928e5"), 
-            new VehiculoPatente("some-patente"),
-            new VehiculoKm( "some-km")
-        );
+        Vehiculo vehiculo = VehiculoMother.random();
 
         repository.save(vehiculo);
         
-        assertEquals(Optional.of(vehiculo), repository.search(vehiculo.getId().value()));
+        assertEquals(Optional.of(vehiculo), repository.search(vehiculo.getId()));
     }
 
     @Test
     void no_encontrar_un_vehiculo_que_no_existente() {
         VehiculoEnMemoriaRepository repository = new VehiculoEnMemoriaRepository();
-        assertFalse(repository.search("non-existing-id").isPresent());
+        assertFalse(repository.search(VehiculoIdMother.random()).isPresent());
     }
     
 }

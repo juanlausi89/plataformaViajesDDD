@@ -6,7 +6,7 @@ public interface VehiculoRepository {
 
     public void save(Vehiculo vehiculo);
 
-    Optional<Vehiculo> search(String id);
+    Optional<Vehiculo> search(VehiculoId id);
     
     
 }
