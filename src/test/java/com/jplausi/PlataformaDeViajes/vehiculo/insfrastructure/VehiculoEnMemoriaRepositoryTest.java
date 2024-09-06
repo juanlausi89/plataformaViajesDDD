@@ -7,12 +7,13 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 
+import com.jplausi.PlataformaDeViajes.vehiculo.VehiculoModuleInfrastructureTestCase;
 import com.jplausi.PlataformaDeViajes.vehiculo.domain.Vehiculo;
 import com.jplausi.PlataformaDeViajes.vehiculo.domain.VehiculoIdMother;
 import com.jplausi.PlataformaDeViajes.vehiculo.domain.VehiculoMother;
 
 
-final class VehiculoEnMemoriaRepositoryTest {
+final class VehiculoEnMemoriaRepositoryTest extends VehiculoModuleInfrastructureTestCase {
 
     @Test
     void guardar_un_vehiculo_valido(){
