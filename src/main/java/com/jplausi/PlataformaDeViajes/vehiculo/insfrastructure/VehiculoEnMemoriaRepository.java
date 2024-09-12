@@ -9,7 +9,7 @@ import com.jplausi.PlataformaDeViajes.vehiculo.domain.VehiculoId;
 import com.jplausi.PlataformaDeViajes.vehiculo.domain.VehiculoRepository;
 
 
-@Service
+//@Service
 public class VehiculoEnMemoriaRepository implements VehiculoRepository {
     
     private HashMap<String,Vehiculo> vehiculos = new HashMap<>();
