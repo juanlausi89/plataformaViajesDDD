@@ -28,7 +28,6 @@ public class MysqlVehiculoRepository implements VehiculoRepository {
     @Transactional
     @Override
     public void save(Vehiculo vehiculo) {
-        System.out.println(vehiculo.toString());
         VehiculoEntity vehiculoEntity = mapper.vehiculoToVehiculoEntity(vehiculo);
         repository.save(vehiculoEntity);
     }
