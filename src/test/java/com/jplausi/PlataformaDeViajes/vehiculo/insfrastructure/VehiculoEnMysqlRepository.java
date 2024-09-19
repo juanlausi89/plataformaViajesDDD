@@ -17,8 +17,10 @@ import com.jplausi.PlataformaDeViajes.vehiculo.domain.VehiculoIdMother;
 import com.jplausi.PlataformaDeViajes.vehiculo.domain.VehiculoMother;
 import com.jplausi.PlataformaDeViajes.vehiculo.insfrastructure.persistence.JpaVehiculoRepository;
 
+import jakarta.transaction.Transactional;
 
 
+@Transactional
 public class VehiculoEnMysqlRepository extends VehiculoModuleInfrastructureTestCase {
 
     @Autowired
