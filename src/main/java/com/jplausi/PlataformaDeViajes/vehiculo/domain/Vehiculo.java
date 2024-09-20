@@ -2,7 +2,10 @@ package com.jplausi.PlataformaDeViajes.vehiculo.domain;
 
 import java.util.Objects;
 
-public class Vehiculo {
+import com.jplausi.PlataformaDeViajes.shared.domain.AggregateRoot;
+import com.jplausi.PlataformaDeViajes.shared.domain.vehiculo.VehiculoCreatedDomainEvent;
+
+public class Vehiculo extends AggregateRoot {
 
     private VehiculoId id;
     private VehiculoPatente patente;
@@ -13,6 +16,20 @@ public class Vehiculo {
         this.id = id;
         this.patente = patente;
         this.km = km;
+    }
+
+    private Vehiculo() {
+        id       = null;
+        patente     = null;
+        km = null;
+    }
+
+    public static Vehiculo create(VehiculoId id, VehiculoPatente patente, VehiculoKm km) {
+        Vehiculo vehiculo = new Vehiculo(id, patente, km);
+
+        vehiculo.record(new VehiculoCreatedDomainEvent(id.value(), patente.value(), km.value()));
+
+        return vehiculo;
     }
 
     public VehiculoId getId() {
