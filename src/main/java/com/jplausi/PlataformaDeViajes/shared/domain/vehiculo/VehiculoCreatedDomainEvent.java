@@ -6,7 +6,7 @@ import java.util.Objects;
 
 import com.jplausi.PlataformaDeViajes.shared.domain.bus.event.DomainEvent;
 
-public class VehiculoCreatedDomainEvent extends DomainEvent<VehiculoCreatedDomainEvent> {
+public class VehiculoCreatedDomainEvent extends DomainEvent{
     private final String patente;
     private final String km;
 

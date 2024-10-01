@@ -9,7 +9,6 @@ import com.jplausi.PlataformaDeViajes.shared.domain.Service;
 import com.jplausi.PlataformaDeViajes.shared.domain.bus.event.DomainEvent;
 import com.jplausi.PlataformaDeViajes.shared.domain.bus.event.EventBus;
 
-@Primary
 @Service
 public class SpringApplicationEventBus implements EventBus {
     private final ApplicationEventPublisher publisher;
@@ -19,11 +18,11 @@ public class SpringApplicationEventBus implements EventBus {
     }
 
     @Override
-    public void publish(final List<DomainEvent<?>> events) {
+    public void publish(final List<DomainEvent> events) {
         events.forEach(this::publish);
     }
 
-    private void publish(final DomainEvent<?> event) {
+    private void publish(final DomainEvent event) {
         this.publisher.publishEvent(event);
     }
 }

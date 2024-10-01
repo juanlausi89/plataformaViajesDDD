@@ -29,7 +29,7 @@ public abstract class VehiculoModuleUnitTestCase extends UnitTestCase {
         verify(repository, atLeastOnce()).save(vehiculo);
     }
 
-    public void shouldHavePublished(DomainEvent<?> domainEvent) {
+    public void shouldHavePublished(DomainEvent domainEvent) {
         shouldHavePublished(Collections.singletonList(domainEvent));
     }
 }

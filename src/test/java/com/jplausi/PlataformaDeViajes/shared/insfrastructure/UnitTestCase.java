@@ -20,11 +20,11 @@ public abstract class UnitTestCase {
         eventBus = mock(EventBus.class);
     }
     
-    public void shouldHavePublished(List<DomainEvent<?>> domainEvents) {
+    public void shouldHavePublished(List<DomainEvent> domainEvents) {
         verify(eventBus, atLeastOnce()).publish(domainEvents);
     }
     
-    public void shouldHavePublished(DomainEvent<?> domainEvent) {
+    public void shouldHavePublished(DomainEvent domainEvent) {
         shouldHavePublished(Collections.singletonList(domainEvent));
     }
 }
