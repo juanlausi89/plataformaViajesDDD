@@ -16,7 +16,7 @@ public final class ContadorDeVehiculos {
         this.incrementer = incrementer;
     }
 
-    @EventListener
+    //@EventListener
     public void on(VehiculoCreatedDomainEvent event) {
         VehiculoId vehiculoId = new VehiculoId(event.aggregateId());
 
