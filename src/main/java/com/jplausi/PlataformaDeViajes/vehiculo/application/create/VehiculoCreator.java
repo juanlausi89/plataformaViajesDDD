@@ -1,6 +1,5 @@
 package com.jplausi.PlataformaDeViajes.vehiculo.application.create;
 
-import com.jplausi.PlataformaDeViajes.apps.vehiculo.CreateVehiculoRequest;
 import com.jplausi.PlataformaDeViajes.shared.domain.Service;
 import com.jplausi.PlataformaDeViajes.shared.domain.bus.event.EventBus;
 import com.jplausi.PlataformaDeViajes.vehiculo.domain.Vehiculo;
@@ -22,11 +21,7 @@ public final class VehiculoCreator {
     }
 
 
-    public void create(CreateVehiculoRequest request){
-
-        VehiculoId id = new VehiculoId(request.getId());
-        VehiculoPatente patente = new VehiculoPatente(request.getPatente());
-        VehiculoKm km = new VehiculoKm(request.getId());
+    public void create(VehiculoId id,VehiculoPatente patente,VehiculoKm km  ){
         
         Vehiculo vehiculo = Vehiculo.create(id, patente, km);
 

@@ -7,23 +7,25 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jplausi.PlataformaDeViajes.vehiculo.application.create.VehiculoCreator;
+import com.jplausi.PlataformaDeViajes.shared.domain.bus.command.CommandBus;
+import com.jplausi.PlataformaDeViajes.shared.domain.bus.command.CommandNotRegisteredError;
+import com.jplausi.PlataformaDeViajes.vehiculo.application.create.CreateVehiculoCommand;
 
 @RestController
 public final class VehiculoPutController {
 
-    private VehiculoCreator creator;
+    private CommandBus bus;
 
-    public VehiculoPutController(VehiculoCreator creator){
-        this.creator = creator;
+    public VehiculoPutController(CommandBus bus){
+        this.bus = bus;
     }
 
     @PutMapping(value = "/vehiculo/{id}")
     public ResponseEntity<String> create(
         @PathVariable String id,
         @RequestBody Request request
-    ){
-        creator.create(new CreateVehiculoRequest(id, request.getPatente(), request.getKm()));
+    ) throws CommandNotRegisteredError{
+        bus.dispatch(new CreateVehiculoCommand(id, request.getPatente(), request.getKm()));
         
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

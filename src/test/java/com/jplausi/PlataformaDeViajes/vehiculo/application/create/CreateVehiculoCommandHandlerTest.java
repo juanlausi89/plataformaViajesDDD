@@ -9,7 +9,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.jplausi.PlataformaDeViajes.apps.vehiculo.CreateVehiculoRequest;
 import com.jplausi.PlataformaDeViajes.shared.domain.bus.event.DomainEvent;
 import com.jplausi.PlataformaDeViajes.shared.domain.vehiculo.VehiculoCreatedDomainEvent;
 import com.jplausi.PlataformaDeViajes.vehiculo.VehiculoModuleUnitTestCase;
@@ -18,28 +17,28 @@ import com.jplausi.PlataformaDeViajes.vehiculo.domain.VehiculoCreatedDomainEvent
 import com.jplausi.PlataformaDeViajes.vehiculo.domain.VehiculoMother;
 import com.jplausi.PlataformaDeViajes.vehiculo.domain.VehiculoRepository;
 
-final class VehiculoCreatorTest extends VehiculoModuleUnitTestCase {
+final class CreateVehiculoCommandHandlerTest extends VehiculoModuleUnitTestCase {
 
-    private VehiculoCreator creator;
+    private CreateVehiculoCommandHandler handler;
 
 
     @BeforeEach
     protected void setUp() {
         super.setUp();
-        creator = new VehiculoCreator(repository,eventBus);
+        handler = new CreateVehiculoCommandHandler (new VehiculoCreator(repository,eventBus));
     }
 
     //Enfoque con herencia
     @Test
     void guardar_vehiculo_valido(){
 
-        CreateVehiculoRequest request = CreateVehiculoRequestMother.random();
+        CreateVehiculoCommand command = CreateVehiculoCommandMother.random();
 
-        Vehiculo vehiculo = VehiculoMother.fromRequest(request);
+        Vehiculo vehiculo = VehiculoMother.fromRequest(command);
 
         VehiculoCreatedDomainEvent domainEvent = VehiculoCreatedDomainEventMother.fromCourse(vehiculo);
 
-        creator.create(request);
+        handler.handle(command);
 
         shouldHaveSaved(vehiculo);
         shouldHavePublished(domainEvent);

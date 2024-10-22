@@ -1,6 +1,6 @@
 package com.jplausi.PlataformaDeViajes.vehiculo.domain;
 
-import com.jplausi.PlataformaDeViajes.apps.vehiculo.CreateVehiculoRequest;
+import com.jplausi.PlataformaDeViajes.vehiculo.application.create.CreateVehiculoCommand;
 
 public class VehiculoMother {
     
@@ -8,11 +8,11 @@ public class VehiculoMother {
         return new Vehiculo(id, patente, km);
     }
 
-    public static Vehiculo fromRequest(CreateVehiculoRequest request){
+    public static Vehiculo fromRequest(CreateVehiculoCommand command){
         return create(
-            VehiculoIdMother.create(request.getId()), 
-            VehiculoPatenteMother.create(request.getPatente()), 
-            VehiculoKmMother.create(request.getKm())
+            VehiculoIdMother.create(command.id()), 
+            VehiculoPatenteMother.create(command.patente()), 
+            VehiculoKmMother.create(command.km())
             );
     }
 
